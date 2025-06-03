@@ -1,5 +1,5 @@
 package com.gilminecraftjdbc.gildbc.controlller;
 
-public class MainController {
+public class GameController {
     
 }
