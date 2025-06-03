@@ -1,5 +1,7 @@
 package com.gilminecraftjdbc.gildbc.repository;
 
-public class EnemigoRepository {
-    
+import com.gilminecraftjdbc.gildbc.model.Enemigo;
+import org.springframework.data.repository.CrudRepository;
+
+public interface EnemigoRepository extends CrudRepository<Enemigo, Long> {
 }

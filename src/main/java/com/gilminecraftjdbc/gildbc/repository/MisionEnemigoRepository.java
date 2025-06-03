@@ -6,6 +6,10 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MisionEnemigoRepository extends CrudRepository<MisionEnemigo, Long> {
-    // Consulta personalizada para buscar por idMision
+
+    // Buscar enemigos por ID de misión
     List<MisionEnemigo> findByIdMision(Long idMision);
+    
+    // Buscar misiones por ID de enemigo
+    List<MisionEnemigo> findByIdEnemigo(Long idEnemigo);
 }
