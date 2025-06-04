@@ -9,7 +9,7 @@ import com.gilminecraftjdbc.gildbc.model.Enemigo;
 import com.gilminecraftjdbc.gildbc.model.Mision;
 
 public interface EnemigoRepository extends CrudRepository<Enemigo, Long> {
-
+    
     // ---- Consultas para la relación N:M con Mision ----
 
     // 1. Asignar un enemigo a una misión (INSERT en tabla intermedia)
