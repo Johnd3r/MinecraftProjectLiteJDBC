@@ -17,15 +17,9 @@ public class EnemigoController {
 
     private final EnemigoRepository enemigoRepo;
 
-    // --- Punto 9: Ver Misiones por Enemigo ---
     @GetMapping("/{idEnemigo}/misiones")
-    public String verMisionesDeEnemigo(
-        @PathVariable Long idEnemigo,
-        Model model
-    ) {
+    public String verMisionesDeEnemigo(@PathVariable Long idEnemigo, Model model) {
         model.addAttribute("misiones", enemigoRepo.findMisionesByEnemigoId(idEnemigo));
-        return "enemigos/misiones-asignadas";
+        return "enemigos/misiones";
     }
-
-    // --- Punto 10: Validación general (no requiere lógica adicional) ---
 }

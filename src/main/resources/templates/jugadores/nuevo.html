@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Jugador</title>
+</head>
+<body>
+    <h2>Crear nuevo jugador y su misión</h2>
+    
+    <form th:action="@{/jugadores}" method="post">
+        <fieldset>
+            <legend>Jugador</legend>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="nivel">Nivel:</label>
+            <input type="number" id="nivel" name="nivel" required>
+
+            <label for="experiencia">Experiencia:</label>
+            <input type="number" id="experiencia" name="experiencia" step="0.1" required>
+
+            <label for="tipoJugador">Tipo:</label>
+            <select id="tipoJugador" name="tipoJugador" required>
+                <option>EXPLORADOR</option>
+                <option>GUERRERO</option>
+                <option>CONSTRUCTOR</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Misión</legend>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="dificultad">Dificultad:</label>
+            <select id="dificultad" name="dificultad" required>
+                <option>FACIL</option>
+                <option>MEDIA</option>
+                <option>DIFICIL</option>
+            </select>
+
+            <label for="recompensaXP">Recompensa XP:</label>
+            <input type="number" id="recompensaXP" name="recompensaXP" required>
+
+            <label for="estadoMision">Estado:</label>
+            <select id="estadoMision" name="estadoMision" required>
+                <option>PENDIENTE</option>
+                <option>EN_PROGRESO</option>
+                <option>COMPLETADA</option>
+            </select>
+        </fieldset>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a th:href="@{/jugadores}">Volver</a>
+</body>
+</html>

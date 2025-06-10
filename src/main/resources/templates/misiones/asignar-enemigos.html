@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar Enemigos</title>
+</head>
+<body>
+    <h2>Asignar Enemigos a la Misión: <span th:text="${mision.titulo}"></span></h2>
+
+    <form th:action="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>Enemigo</th>
+                    <th>Cantidad</th>
+                    <th>Asignar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="enemigo : ${enemigos}">
+                    <td th:text="${enemigo.nombre} + ' (' + ${enemigo.tipo} + ')'"></td>
+                    <td>
+                        <input type="number" th:name="'cantidades[' + ${enemigo.idEnemigo} + ']'" min="1" value="1">
+                    </td>
+                    <td>
+                        <input type="checkbox" th:name="enemigosSeleccionados" th:value="${enemigo.idEnemigo}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button type="submit">Asignar Enemigos</button>
+    </form>
+
+    <a th:href="@{'/misiones/' + ${mision.idMision} + '/enemigos'}">Ver Enemigos Asignados</a>
+</body>
+</html>

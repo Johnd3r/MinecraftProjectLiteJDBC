@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Enemigos</title>
+</head>
+<body>
+    <h2>Enemigos Registrados</h2>
+
+    <a th:href="@{/misiones/enemigos/nuevo}">Nuevo Enemigo</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Vida</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="enemigo : ${enemigos}">
+                <td th:text="${enemigo.idEnemigo}"></td>
+                <td th:text="${enemigo.nombre}"></td>
+                <td th:text="${enemigo.tipo}"></td>
+                <td th:text="${enemigo.vida}"></td>
+                <td>
+                    <a th:href="@{'/enemigos/' + ${enemigo.idEnemigo} + '/misiones'}">Ver Misiones</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

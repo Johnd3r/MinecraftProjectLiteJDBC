@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Logro</title>
+</head>
+<body>
+    <h2>Agregar Logro</h2>
+
+    <form th:action="@{'/jugadores/' + ${jugador.idJugador} + '/logros/guardar'}"
+
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" th:field="*{nombre}" required>
+
+        <label for="tipo">Tipo:</label>
+        <select th:field="*{tipo}">
+            <option value="COMBATE">COMBATE</option>
+            <option value="EXPLORACION">EXPLORACION</option>
+            <option value="RECOLECCION">RECOLECCION</option>
+            <option value="HISTORIA">HISTORIA</option>
+        </select>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" th:field="*{fecha}" required>
+
+        <label for="puntos">Puntos:</label>
+        <input type="number" th:field="*{puntos}" required>
+
+        <button type="submit">Guardar Logro</button>
+    </form>
+
+    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros'}">Cancelar</a>
+
+</body>
+</html>

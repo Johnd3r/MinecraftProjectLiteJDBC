@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Enemigos en Misión</title>
+</head>
+<body>
+    <h2>Enemigos Asignados a la Misión</h2>
+
+    <a th:href="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}">Asignar Más Enemigos</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Cantidad</th>
+                <th>Poder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="me : ${enemigos}">
+                <td th:text="${me.enemigo.nombre}"></td>
+                <td th:text="${me.enemigo.tipo}"></td>
+                <td th:text="${me.cantidad}"></td>
+                <td th:text="${me.enemigo.poder}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/misiones/enemigos}">Volver a Misiones</a>
+</body>
+</html>

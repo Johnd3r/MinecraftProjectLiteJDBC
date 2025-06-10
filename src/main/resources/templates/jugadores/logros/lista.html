@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logros del Jugador</title>
+</head>
+<body>
+    <h2>Logros del Jugador</h2>
+
+    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros/nuevo'}">Agregar Logro</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Puntos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="logro : ${logros}">
+                <td th:text="${logro.nombre}"></td>
+                <td th:text="${logro.tipo}"></td>
+                <td th:text="${logro.fecha}"></td>
+                <td th:text="${logro.puntos}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/jugadores}">Volver</a>
+</body>
+</html>

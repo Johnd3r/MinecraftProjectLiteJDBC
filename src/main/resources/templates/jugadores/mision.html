@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Misión del Jugador</title>
+</head>
+<body>
+    <h2>Misión del Jugador</h2>
+
+    <div th:if="${mision != null}">
+        <p><strong>Título:</strong> <span th:text="${mision.titulo}"></span></p>
+        <p><strong>Dificultad:</strong> <span th:text="${mision.dificultad}"></span></p>
+        <p><strong>Recompensa XP:</strong> <span th:text="${mision.recompensaXP}"></span></p>
+        <p><strong>Estado:</strong> <span th:text="${mision.estadoMision}"></span></p>
+
+        <a th:href="@{'/misiones/' + ${mision.idMision} + '/enemigos'}">Ver Enemigos</a>
+        <a th:href="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}">Asignar Enemigos</a>
+    </div>
+    <div th:unless="${mision != null}">
+        <p>Este jugador no tiene misión asignada.</p>
+    </div>
+
+    <a th:href="@{/jugadores}">Volver</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title} + ' - Minecraft Missions'">Minecraft Missions</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Minecraft Missions Lite</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/jugadores}">Jugadores</a></li>
+                <li><a th:href="@{/misiones}">Misiones</a></li>
+                <li><a th:href="@{/enemigos}">Enemigos</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+        <main>
+            <h2 th:text="${title}">Título</h2>
+        </main>
+    
+    <footer>
+        <p>Sistema de Misiones Minecraft - Spring Boot</p>
+    </footer>
+</body>
+</html>
