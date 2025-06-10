@@ -8,28 +8,40 @@
     <h2>Crear Nuevo Enemigo</h2>
 
     <form th:action="@{/misiones/enemigos/guardar}" method="post" th:object="${enemigo}">
-        <label for="nombre">Nombre:</label>
-        <input type="text" th:field="*{nombre}" required>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" th:field="*{nombre}" required />
+        </div>
 
-        <label for="tipo">Tipo:</label>
-        <select th:field="*{tipo}">
-            <option>HOSTIL</option>
-            <option>NEUTRAL</option>
-            <option>BOSS</option>
-        </select>
+        <div>
+            <label for="tipo">Tipo:</label>
+            <select th:field="*{tipo}">
+                <option th:each="tipo : ${T(com.gilminecraftjdbc.gildbc.model.enums.TipoEnemigo).values()}"
+                        th:value="${tipo}"
+                        th:text="${tipo}">
+                </option>
+            </select>
+        </div>
 
-        <label for="vida">Vida:</label>
-        <input type="number" th:field="*{vida}" required>
+        <div>
+            <label for="vida">Vida:</label>
+            <input type="number" th:field="*{vida}" min="1" required />
+        </div>
 
-        <label for="poder">Poder:</label>
-        <input type="number" th:field="*{poder}" required>
+        <div>
+            <label for="poder">Poder:</label>
+            <input type="number" th:field="*{poder}" min="1" required />
+        </div>
 
-        <label for="estado">Estado:</label>
-        <select th:field="*{estado}">
-            <option>ACTIVO</option>
-            <option>DERROTADO</option>
-            <option>DESAPARECIDO</option>
-        </select>
+        <div>
+            <label for="estado">Estado:</label>
+            <select th:field="*{estado}">
+                <option th:each="estado : ${T(com.gilminecraftjdbc.gildbc.model.enums.EstadoEnemigo).values()}"
+                        th:value="${estado}"
+                        th:text="${estado}">
+                </option>
+            </select>
+        </div>
 
         <button type="submit">Guardar Enemigo</button>
     </form>

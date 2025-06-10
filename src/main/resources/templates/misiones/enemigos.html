@@ -20,10 +20,10 @@
         </thead>
         <tbody>
             <tr th:each="me : ${enemigos}">
-                <td th:text="${me.enemigo.nombre}"></td>
-                <td th:text="${me.enemigo.tipo}"></td>
-                <td th:text="${me.cantidad}"></td>
-                <td th:text="${me.enemigo.poder}"></td>
+                <td th:text="${me.nombre}"></td>
+                <td th:text="${me.tipo}"></td>
+                <td><!-- Aquí no puedes mostrar cantidad, porque no la tienes --></td>
+                <td th:text="${me.poder}"></td>
             </tr>
         </tbody>
     </table>

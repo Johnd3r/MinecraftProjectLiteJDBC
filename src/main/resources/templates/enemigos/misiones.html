@@ -19,12 +19,12 @@
         <tbody>
             <tr th:each="me : ${misiones}">
                 <td>
-                    <a th:href="@{'/misiones/' + ${me.mision.idMision} + '/enemigos'}"
-                       th:text="${me.mision.titulo}"></a>
+                    <a th:href="@{'/misiones/' + ${me.idMision} + '/enemigos'}"
+                       th:text="${me.titulo}"></a>
                 </td>
-                <td th:text="${me.mision.jugador.nombre}"></td>
+                <td th:text="${me.jugador.nombre}"></td>
                 <td th:text="${me.cantidad}"></td>
-                <td th:text="${me.mision.dificultad}"></td>
+                <td th:text="${me.dificultad}"></td>
             </tr>
         </tbody>
     </table>
