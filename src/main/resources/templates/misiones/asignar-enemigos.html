@@ -32,6 +32,8 @@
         <button type="submit">Asignar Enemigos</button>
     </form>
 
-    <a th:href="@{'/misiones/' + ${mision.idMision} + '/enemigos'}">Ver Enemigos Asignados</a>
+    <a th:href="@{/jugadores/{id}/mision(id=${mision.idJugador.id})}">Volver a Misión</a>
+
+
 </body>
 </html>
