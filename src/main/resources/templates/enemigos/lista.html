@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Enemigos</title>
+  <meta charset="UTF-8">
+  <title>Lista de Enemigos</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Enemigos Registrados</h2>
+  <h2 class="section-title">Enemigos Registrados</h2>
 
-    <a th:href="@{/misiones/enemigos/nuevo}">Nuevo Enemigo</a>
+  <a th:href="@{/misiones/enemigos/nuevo}" class="button-link">Nuevo Enemigo</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Vida</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="enemigo : ${enemigos}">
-                <td th:text="${enemigo.idEnemigo}"></td>
-                <td th:text="${enemigo.nombre}"></td>
-                <td th:text="${enemigo.tipo}"></td>
-                <td th:text="${enemigo.vida}"></td>
-                <td>
-                    <a th:href="@{'/enemigos/' + ${enemigo.idEnemigo} + '/misiones'}">Ver Misiones</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/}">Volver al inicio</a>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Vida</th>
+        <th>Poder</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="enemigo : ${enemigos}">
+        <td th:text="${enemigo.idEnemigo}"></td>
+        <td th:text="${enemigo.nombre}"></td>
+        <td th:text="${enemigo.tipo}"></td>
+        <td th:text="${enemigo.vida}"></td>
+        <td th:text="${enemigo.poder}"></td>
+        <td th:text="${enemigo.estado}"></td>
+        <td>
+          <a th:href="@{'/enemigos/' + ${enemigo.idEnemigo} + '/misiones'}">Ver Misiones</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{/}" class="button-link">Volver al inicio</a>
 </body>
 </html>

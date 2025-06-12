@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Logros del Jugador</title>
+  <meta charset="UTF-8">
+  <title>Logros del Jugador</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Logros del Jugador</h2>
+  <h2 class="section-title">Logros de <span th:text="${jugador.nombre}"></span></h2>
 
-    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros/nuevo'}">Agregar Logro</a>
+  <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros/nuevo'}" class="button-link">Agregar Logro</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th>Puntos</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="logro : ${logros}">
-                <td th:text="${logro.nombre}"></td>
-                <td th:text="${logro.tipo}"></td>
-                <td th:text="${logro.fecha}"></td>
-                <td th:text="${logro.puntos}"></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/mision'}">Volver a Misión</a>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Puntos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="logro : ${logros}">
+        <td th:text="${logro.idLogro}"></td>
+        <td th:text="${logro.nombre}"></td>
+        <td th:text="${logro.tipo}"></td>
+        <td th:text="${#dates.format(logro.fecha, 'dd/MM/yyyy')}"></td>
+        <td th:text="${logro.puntos}"></td>
+      </tr>
+      <tr th:if="${logros.empty}">
+        <td colspan="5">Este jugador aún no tiene logros.</td>
+      </tr>
+    </tbody>
+  </table>
 
+  <a th:href="@{/jugadores}" class="button-link">Volver a jugadores</a>
 </body>
 </html>

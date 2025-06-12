@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista Global de Logros</title>
+  <meta charset="UTF-8">
+  <title>Todos los Logros</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Todos los Logros Registrados</h2>
+  <h2 class="section-title">Lista Global de Logros</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th>Puntos</th>
-                <th>Jugador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="logro : ${logros}">
-                <td th:text="${logro.idLogro}"></td>
-                <td th:text="${logro.nombre}"></td>
-                <td th:text="${logro.tipo}"></td>
-                <td th:text="${#dates.format(logro.fecha, 'dd/MM/yyyy')}"></td>
-                <td th:text="${logro.puntos}"></td>
-                <td th:text="${nombresJugadores[logro.idJugador.id]}">Jugador no encontrado</td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Puntos</th>
+        <th>Jugador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="logro : ${logros}">
+        <td th:text="${logro.idLogro}"></td>
+        <td th:text="${logro.nombre}"></td>
+        <td th:text="${logro.tipo}"></td>
+        <td th:text="${#dates.format(logro.fecha, 'dd/MM/yyyy')}"></td>
+        <td th:text="${logro.puntos}"></td>
+        <td th:text="${nombresJugadores[logro.idJugador.id]}">Desconocido</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <a th:href="@{/}">Volver al inicio</a>
+  <a th:href="@{/}" class="button-link">Volver al inicio</a>
 </body>
 </html>

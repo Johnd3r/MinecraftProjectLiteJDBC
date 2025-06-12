@@ -1,5 +1,7 @@
 package com.gilminecraftjdbc.gildbc.controlller;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.gilminecraftjdbc.gildbc.model.Enemigo;
+import com.gilminecraftjdbc.gildbc.model.Mision;
 import com.gilminecraftjdbc.gildbc.repository.EnemigoRepository;
 import com.gilminecraftjdbc.gildbc.repository.MisionRepository;
+import com.gilminecraftjdbc.gildbc.repository.JugadorRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +26,7 @@ public class MisionController {
 
     private final EnemigoRepository enemigoRepo;
     private final MisionRepository misionRepo;
+    private final JugadorRepository jugadorRepo;
 
     @GetMapping("/enemigos/nuevo")
     public String formNuevoEnemigo(Model model) {
@@ -65,8 +70,16 @@ public class MisionController {
 
     @GetMapping
     public String listarMisiones(Model model) {
-        model.addAttribute("misiones", misionRepo.findAll());
-        return "misiones/lista"; // Asegúrate de tener este archivo en templates/misiones/lista.html
+        List<Mision> misiones = new java.util.ArrayList<>();
+        misionRepo.findAll().forEach(misiones::add);
+        Map<Long, String> jugadoresMap = new HashMap<>();
+        for (Mision m : misiones) {
+            Long idJ = m.getIdJugador().getId();
+            jugadorRepo.findById(idJ).ifPresent(j -> jugadoresMap.put(idJ, j.getNombre()));
+        }
+        model.addAttribute("misiones", misiones);
+        model.addAttribute("jugadoresMap", jugadoresMap);
+        return "misiones/lista";
     }
 
 }

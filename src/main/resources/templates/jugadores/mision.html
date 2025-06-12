@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Misión del Jugador</title>
+  <meta charset="UTF-8">
+  <title>Misión del Jugador</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Misión del Jugador</h2>
+  <h2 class="section-title">Misión Asignada</h2>
 
-    <div th:if="${mision != null}">
-        <p><strong>Título:</strong> <span th:text="${mision.titulo}"></span></p>
-        <p><strong>Dificultad:</strong> <span th:text="${mision.dificultad}"></span></p>
-        <p><strong>Recompensa XP:</strong> <span th:text="${mision.recompensaXP}"></span></p>
-        <p><strong>Estado:</strong> <span th:text="${mision.estadoMision}"></span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Dificultad</th>
+        <th>Recompensa XP</th>
+        <th>Estado</th>
+        <th>Enemigos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:if="${mision != null}">
+        <td th:text="${mision.idMision}"></td>
+        <td th:text="${mision.titulo}"></td>
+        <td th:text="${mision.dificultad}"></td>
+        <td th:text="${mision.recompensaXP}"></td>
+        <td th:text="${mision.estadoMision}"></td>
+        <td>
+          <a th:href="@{'/misiones/' + ${mision.idMision} + '/enemigos'}">Ver Enemigos</a>
+        </td>
+      </tr>
+      <tr th:if="${mision == null}">
+        <td colspan="6">Este jugador no tiene misión asignada.</td>
+      </tr>
+    </tbody>
+  </table>
 
-        <a th:href="@{'/misiones/' + ${mision.idMision} + '/enemigos'}">Ver Enemigos</a>
-        <a th:href="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}">Asignar Enemigos</a>
-    </div>
-    <div th:unless="${mision != null}">
-        <p>Este jugador no tiene misión asignada.</p>
-    </div>
-
-    <a th:href="@{/jugadores}">Volver a Jugadores</a>
-
-    
+  <a th:href="@{/jugadores}" class="button-link">Volver a jugadores</a>
 </body>
 </html>

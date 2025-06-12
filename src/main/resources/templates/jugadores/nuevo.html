@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Nuevo Jugador</title>
+  <meta charset="UTF-8">
+  <title>Nuevo Jugador</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Crear nuevo jugador y su misión</h2>
-    
-    <form th:action="@{/jugadores}" method="post">
-        <fieldset>
-            <legend>Jugador</legend>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+  <h2 class="section-title">Registrar Jugador y su Misión</h2>
 
-            <label for="nivel">Nivel:</label>
-            <input type="number" id="nivel" name="nivel" required>
+  <form th:action="@{/jugadores}" method="post">
+    <fieldset>
+      <legend>Datos del Jugador</legend>
+      <label>Nombre:</label>
+      <input type="text" name="nombre" required />
 
-            <label for="experiencia">Experiencia:</label>
-            <input type="number" id="experiencia" name="experiencia" step="0.1" required>
+      <label>Nivel:</label>
+      <input type="number" name="nivel" min="1" required />
 
-            <label for="tipoJugador">Tipo:</label>
-            <select id="tipoJugador" name="tipoJugador" required>
-                <option>EXPLORADOR</option>
-                <option>GUERRERO</option>
-                <option>CONSTRUCTOR</option>
-            </select>
-        </fieldset>
+      <label>Experiencia:</label>
+      <input type="number" step="0.1" name="experiencia" min="0" required />
 
-        <fieldset>
-            <legend>Misión</legend>
-            <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo" required>
+      <label>Tipo de Jugador:</label>
+      <select name="tipoJugador" required>
+        <option th:each="tipo : ${T(com.gilminecraftjdbc.gildbc.model.enums.TipoJugador).values()}"
+                th:value="${tipo}" th:text="${tipo}">
+        </option>
+      </select>
+    </fieldset>
 
-            <label for="dificultad">Dificultad:</label>
-            <select id="dificultad" name="dificultad" required>
-                <option>FACIL</option>
-                <option>MEDIA</option>
-                <option>DIFICIL</option>
-            </select>
+    <fieldset>
+      <legend>Asignar Misión</legend>
+      <label>Título:</label>
+      <input type="text" name="titulo" required />
 
-            <label for="recompensaXP">Recompensa XP:</label>
-            <input type="number" id="recompensaXP" name="recompensaXP" required>
+      <label>Dificultad:</label>
+      <select name="dificultad" required>
+        <option th:each="dif : ${T(com.gilminecraftjdbc.gildbc.model.enums.Dificultad).values()}"
+                th:value="${dif}" th:text="${dif}">
+        </option>
+      </select>
 
-            <label for="estadoMision">Estado:</label>
-            <select id="estadoMision" name="estadoMision" required>
-                <option>PENDIENTE</option>
-                <option>EN_PROGRESO</option>
-                <option>COMPLETADA</option>
-            </select>
-        </fieldset>
+      <label>Recompensa XP:</label>
+      <input type="number" name="recompensaXP" required />
 
-        <button type="submit">Guardar</button>
-    </form>
+      <label>Estado de Misión:</label>
+      <select name="estadoMision" required>
+        <option th:each="est : ${T(com.gilminecraftjdbc.gildbc.model.enums.EstadoMision).values()}"
+                th:value="${est}" th:text="${est}">
+        </option>
+      </select>
+    </fieldset>
 
-    <a th:href="@{/jugadores}">Volver</a>
+    <button type="submit" class="button-link">Guardar Jugador y Misión</button>
+    <a th:href="@{/jugadores}" class="cancelar">Cancelar</a>
+  </form>
 </body>
 </html>

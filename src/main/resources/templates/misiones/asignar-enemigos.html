@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Asignar Enemigos</title>
+  <meta charset="UTF-8">
+  <title>Asignar Enemigos</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Asignar Enemigos a la Misión: <span th:text="${mision.titulo}"></span></h2>
+  <h2 class="section-title">Asignar Enemigos a la Misión: <span th:text="${mision.titulo}"></span></h2>
 
-    <form th:action="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <th>Enemigo</th>
-                    <th>Cantidad</th>
-                    <th>Asignar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="enemigo : ${enemigos}">
-                    <td th:text="${enemigo.nombre} + ' (' + ${enemigo.tipo} + ')'"></td>
-                    <td>
-                        <input type="number" th:name="'cantidades[' + ${enemigo.idEnemigo} + ']'" min="1" value="1">
-                    </td>
-                    <td>
-                        <input type="checkbox" th:name="enemigosSeleccionados" th:value="${enemigo.idEnemigo}">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button type="submit">Asignar Enemigos</button>
-    </form>
-
-    <a th:href="@{/jugadores/{id}/mision(id=${mision.idJugador.id})}">Volver a Misión</a>
-
-
+  <form th:action="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}" method="post">
+    <table>
+      <thead>
+        <tr>
+          <th>Enemigo</th>
+          <th>Cantidad</th>
+          <th>Asignar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="enemigo : ${enemigos}">
+          <td th:text="${enemigo.nombre} + ' (' + ${enemigo.tipo} + ')'"></td>
+          <td>
+            <input type="number" th:name="'cantidades[' + ${enemigo.idEnemigo} + ']'" min="1" value="1">
+          </td>
+          <td>
+            <input type="checkbox" th:name="enemigosSeleccionados" th:value="${enemigo.idEnemigo}">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="button-link">Asignar Enemigos</button>
+    <a th:href="@{/jugadores/{id}/mision(id=${mision.idJugador.id})}" class="cancelar">Volver a misión</a>
+  </form>
 </body>
 </html>

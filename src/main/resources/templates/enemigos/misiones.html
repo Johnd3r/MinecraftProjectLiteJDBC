@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+  <head>
+    <meta charset="UTF-8" />
     <title>Misiones del Enemigo</title>
-</head>
-<body>
-    <h2>Misiones en las que participa este enemigo</h2>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h2 class="section-title">Misiones donde participa el enemigo</h2>
 
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Dificultad</th>
-                <th>Jugador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="m : ${misiones}">
-                <td th:text="${m.idMision}"></td>
-                <td th:text="${m.titulo}"></td>
-                <td th:text="${m.dificultad}"></td>
-                <td th:text="${nombresJugadores[m.idJugador.id]}"></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>ID Misión</th>
+          <th>Título</th>
+          <th>Dificultad</th>
+          <th>Estado</th>
+          <th>Recompensa XP</th>
+          <th>Cantidad Enemigos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="relacion : ${relaciones}">
+    <td th:text="${relacion.mision.idMision}">1</td>
+    <td th:text="${relacion.mision.titulo}">Título</td>
+    <td th:text="${relacion.mision.dificultad}">DIFICIL</td>
+    <td th:text="${relacion.mision.estadoMision}">PENDIENTE</td>
+    <td th:text="${relacion.mision.recompensaXP}">100</td>
+    <td th:text="${relacion.cantidad}">3</td>
+</tr>
+
+        <tr th:if="${#lists.isEmpty(relaciones)}">
+          <td colspan="6">Este enemigo no está asignado a ninguna misión.</td>
+        </tr>
+      </tbody>
     </table>
 
-    <a th:href="@{/enemigos}">Volver a enemigos</a>
-
-
-</body>
+    <a th:href="@{/enemigos}" class="button-link">VOLVER A ENEMIGOS</a>
+  </body>
 </html>

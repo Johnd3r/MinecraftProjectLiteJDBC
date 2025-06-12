@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Jugadores</title>
+  <meta charset="UTF-8">
+  <title>Lista de Jugadores</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Jugadores Registrados</h2>
+  <h2 class="section-title">Jugadores Registrados</h2>
 
-    <a th:href="@{/jugadores/nuevo}">Nuevo Jugador</a>
+  <a th:href="@{/jugadores/nuevo}" class="button-link">Nuevo Jugador</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Nivel</th>
-                <th>Tipo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="jugador : ${jugadores}">
-                <td th:text="${jugador.idJugador}"></td>
-                <td th:text="${jugador.nombre}"></td>
-                <td th:text="${jugador.nivel}"></td>
-                <td th:text="${jugador.tipoJugador}"></td>
-                <td>
-                    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/mision'}">Ver Misión</a>
-                    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros'}">Ver Logros</a>
-                    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros/nuevo'}">Agregar Logro</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/}">Volver al inicio</a>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Nivel</th>
+        <th>Experiencia</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="jugador : ${jugadores}">
+        <td th:text="${jugador.idJugador}"></td>
+        <td th:text="${jugador.nombre}"></td>
+        <td th:text="${jugador.nivel}"></td>
+        <td th:text="${jugador.experiencia}"></td>
+        <td th:text="${jugador.tipoJugador}"></td>
+        <td>
+          <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/mision'}">Ver Misión</a> |
+          <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros'}">Ver Logros</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{/}" class="button-link">Volver al inicio</a>
 </body>
 </html>

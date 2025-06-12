@@ -1,0 +1,205 @@
+@import url("https://fonts.cdnfonts.com/css/minecraft-4");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Minecraft', sans-serif;
+  color: #fff;
+  background-image: url('/images/dirtBackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* suaviza el fondo */
+  z-index: -1;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 0;
+  border-bottom: 4px solid #63c132;
+  text-align: center;
+}
+
+.minecraft-title {
+  font-size: 2.5rem;
+  color: #ffa946;
+  text-shadow: 2px 2px 0px #000;
+  margin-bottom: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.btn-nav {
+  padding: 12px 30px;
+  font-size: 1rem;
+  background-color: #f89c1c;
+  border: 2px solid #3c3c3c;
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0 #3c3c3c;
+}
+
+.btn-nav:hover {
+  background-color: #ffa946;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  padding: 40px 20px;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 15px 0;
+  color: #ccc;
+  border-top: 4px solid #63c132;
+}
+/* ---------- FORMULARIOS ---------- */
+form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="password"],
+form input[type="date"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: 'Pixelify Sans', sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #f89c1c;
+  box-shadow: 0 0 5px #f89c1c;
+}
+
+/* ---------- BOTONES DE ACCIÓN ---------- */
+button,
+a.button-link {
+  font-family: 'Minecraft', sans-serif;
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: 2px solid #3c3c3c;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+  box-shadow: 0 3px 0 #3c3c3c;
+}
+
+button:hover,
+a.button-link:hover {
+  background-color: #7ddc7d;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Botón naranja */
+.button-orange {
+  background-color: #eb5e1c;
+}
+
+.button-orange:hover {
+  background-color: #ffa946;
+}
+
+/* Botón cancelar */
+a.cancelar {
+  background-color: #999;
+  color: black;
+  padding: 8px 20px;
+  border-radius: 5px;
+  border: 2px solid #444;
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+a.cancelar:hover {
+  background-color: #bbb;
+}
+
+/* ---------- TABLAS ---------- */
+table {
+  width: 90%;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+table thead {
+  background-color: #f89c1c;
+  color: black;
+}
+
+table th, table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+table tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+table a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table a:hover {
+  text-decoration: underline;
+}

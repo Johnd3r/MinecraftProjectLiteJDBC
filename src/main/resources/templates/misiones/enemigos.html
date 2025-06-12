@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Enemigos en Misión</title>
+  <meta charset="UTF-8">
+  <title>Enemigos en la Misión</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Enemigos Asignados a la Misión</h2>
+  <h2 class="section-title">Enemigos Asignados a la Misión</h2>
 
-    <a th:href="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}">Asignar Más Enemigos</a>
+  <a th:href="@{'/misiones/' + ${mision.idMision} + '/asignar-enemigos'}" class="button-link">Asignar Más Enemigos</a>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Cantidad</th>
-                <th>Poder</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="me : ${enemigos}">
-                <td th:text="${me.nombre}"></td>
-                <td th:text="${me.tipo}"></td>
-                <td><!-- Aquí no puedes mostrar cantidad, porque no la tienes --></td>
-                <td th:text="${me.poder}"></td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Poder</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="e : ${enemigos}">
+        <td th:text="${e.nombre}"></td>
+        <td th:text="${e.tipo}"></td>
+        <td th:text="${e.poder}"></td>
+        <td th:text="${e.estado}"></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <a th:href="@{/jugadores/{id}/mision(id=${mision.idJugador.id})}">Volver a Misión</a>
-
+  <a th:href="@{/jugadores/{id}/mision(id=${mision.idJugador.id})}" class="button-link">Volver a misión</a>
 </body>
 </html>

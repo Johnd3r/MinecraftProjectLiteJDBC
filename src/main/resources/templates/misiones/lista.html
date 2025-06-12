@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Listado de Misiones</title>
+  <meta charset="UTF-8">
+  <title>Lista de Misiones</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h2>Listado de Misiones</h2>
+  <h2 class="section-title">Misiones Registradas</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Dificultad</th>
-                <th>Jugador</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="m : ${misiones}">
-                <td th:text="${m.idMision}"></td>
-                <td th:text="${m.titulo}"></td>
-                <td th:text="${m.dificultad}"></td>
-                <td th:text="${m.idJugador.id}"></td>
-                <td>
-                    <a th:href="@{'/misiones/' + ${m.idMision} + '/enemigos'}">Ver Enemigos</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Dificultad</th>
+        <th>Recompensa XP</th>
+        <th>Estado</th>
+        <th>Jugador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="m : ${misiones}">
+        <td th:text="${m.idMision}"></td>
+        <td th:text="${m.titulo}"></td>
+        <td th:text="${m.dificultad}"></td>
+        <td th:text="${m.recompensaXP}"></td>
+        <td th:text="${m.estadoMision}"></td>
+        <td th:text="${jugadoresMap[m.idJugador.id]}">Desconocido</td>
+      </tr>
+    </tbody>
+  </table>
 
-    <a th:href="@{/}">Volver al inicio</a>
+  <a th:href="@{/}" class="button-link">Volver al inicio</a>
 </body>
 </html>
