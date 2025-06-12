@@ -2,33 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Logros del Jugador</title>
+    <title>Lista Global de Logros</title>
 </head>
 <body>
-    <h2>Logros del Jugador</h2>
-
-    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/logros/nuevo'}">Agregar Logro</a>
+    <h2>Todos los Logros Registrados</h2>
 
     <table>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Tipo</th>
                 <th>Fecha</th>
                 <th>Puntos</th>
+                <th>Jugador</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="logro : ${logros}">
+                <td th:text="${logro.idLogro}"></td>
                 <td th:text="${logro.nombre}"></td>
                 <td th:text="${logro.tipo}"></td>
-                <td th:text="${logro.fecha}"></td>
+                <td th:text="${#dates.format(logro.fecha, 'dd/MM/yyyy')}"></td>
                 <td th:text="${logro.puntos}"></td>
+                <td th:text="${nombresJugadores[logro.idJugador.id]}">Jugador no encontrado</td>
             </tr>
         </tbody>
     </table>
-    
-    <a th:href="@{'/jugadores/' + ${jugador.idJugador} + '/mision'}">Volver a Misión</a>
 
+    <a th:href="@{/}">Volver al inicio</a>
 </body>
 </html>

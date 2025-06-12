@@ -32,13 +32,7 @@ public class MisionController {
     @PostMapping("/enemigos/guardar")
     public String guardarEnemigo(@ModelAttribute Enemigo enemigo) {
         enemigoRepo.save(enemigo);
-        return "redirect:/misiones/enemigos";
-    }
-
-    @GetMapping("/enemigos")
-    public String listarEnemigos(Model model) {
-        model.addAttribute("enemigos", enemigoRepo.findAll());
-        return "enemigos/lista";
+        return "redirect:/enemigos";
     }
 
     @GetMapping("/{idMision}/asignar-enemigos")
@@ -50,10 +44,9 @@ public class MisionController {
 
     @PostMapping("/{idMision}/asignar-enemigos")
     public String asignarEnemigos(
-        @PathVariable Long idMision,
-        @RequestParam(name = "enemigosSeleccionados", required = false) Long[] enemigosSeleccionados,
-        @RequestParam Map<String, String> cantidades
-    ) {
+            @PathVariable Long idMision,
+            @RequestParam(name = "enemigosSeleccionados", required = false) Long[] enemigosSeleccionados,
+            @RequestParam Map<String, String> cantidades) {
         if (enemigosSeleccionados != null) {
             for (Long idEnemigo : enemigosSeleccionados) {
                 int cantidad = Integer.parseInt(cantidades.get("cantidades[" + idEnemigo + "]"));
@@ -69,4 +62,11 @@ public class MisionController {
         model.addAttribute("enemigos", enemigoRepo.findByMisionId(idMision));
         return "misiones/enemigos";
     }
+
+    @GetMapping
+    public String listarMisiones(Model model) {
+        model.addAttribute("misiones", misionRepo.findAll());
+        return "misiones/lista"; // Asegúrate de tener este archivo en templates/misiones/lista.html
+    }
+
 }

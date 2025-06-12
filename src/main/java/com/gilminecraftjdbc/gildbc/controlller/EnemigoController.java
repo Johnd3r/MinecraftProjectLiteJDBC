@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/enemigos") // ✅ esto es lo que hace que /enemigos/... funcione
 @RequiredArgsConstructor
 public class EnemigoController {
-    
+
     private final EnemigoRepository enemigoRepo;
     private final JugadorRepository jugadorRepo; // necesario si mostramos nombre del jugador
 
@@ -29,16 +29,20 @@ public class EnemigoController {
     public String verMisionesDeEnemigo(@PathVariable Long idEnemigo, Model model) {
         List<Mision> misiones = enemigoRepo.findMisionesByEnemigoId(idEnemigo);
         Map<Long, String> nombresJugadores = misiones.stream()
-            .map(m -> m.getIdJugador().getId())
-            .distinct()
-            .collect(Collectors.toMap(
-                id -> id,
-                id -> jugadorRepo.findById(id).map(Jugador::getNombre).orElse("Desconocido")
-            ));
+                .map(m -> m.getIdJugador().getId())
+                .distinct()
+                .collect(Collectors.toMap(
+                        id -> id,
+                        id -> jugadorRepo.findById(id).map(Jugador::getNombre).orElse("Desconocido")));
 
         model.addAttribute("misiones", misiones);
         model.addAttribute("nombresJugadores", nombresJugadores);
         return "enemigos/misiones"; // ✅ verifica que este HTML esté dentro de templates/enemigos/
     }
-}
 
+    @GetMapping
+    public String listarEnemigos(Model model) {
+        model.addAttribute("enemigos", enemigoRepo.findAll());
+        return "enemigos/lista";
+    }
+}

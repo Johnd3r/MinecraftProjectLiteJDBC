@@ -1,5 +1,8 @@
 package com.gilminecraftjdbc.gildbc.controlller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.data.jdbc.core.mapping.AggregateReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +67,8 @@ public class JugadorController {
     public String guardarLogro(@PathVariable Long id, @ModelAttribute Logro logro) {
         logro.setIdJugador(AggregateReference.to(id));
         logroRepo.save(logro);
-        return "redirect:/jugadores/" + id + "/logros";
+        return "redirect:/jugadores/" + id + "/logros"; // <- Esta URL necesita que el método
+                                                        // @GetMapping("/{id}/logros") exista y funcione
     }
 
     @GetMapping("/{id}/logros")
@@ -74,4 +78,5 @@ public class JugadorController {
         model.addAttribute("logros", logroRepo.findByIdJugador(id));
         return "jugadores/logros/lista";
     }
+
 }
