@@ -27,6 +27,6 @@ public interface EnemigoRepository extends CrudRepository<Enemigo, Long> {
     List<MisionConCantidad> findMisionesYCantidadByEnemigoId(@Param("idEnemigo") Long idEnemigo);
 
     @Query("SELECT cantidad FROM misionenemigo WHERE idMision = :idMision AND idEnemigo = :idEnemigo")
-Integer findCantidadByMisionAndEnemigo(@Param("idMision") Long idMision, @Param("idEnemigo") Long idEnemigo);
+    Integer findCantidadByMisionAndEnemigo(@Param("idMision") Long idMision, @Param("idEnemigo") Long idEnemigo);
 
 }
